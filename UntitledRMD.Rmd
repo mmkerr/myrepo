@@ -1,0 +1,12 @@
+---
+title: "FluSight Revisions Report"
+author: "This report was developed by the [Reich Lab](https://reichlab.io/) from UMass-Amherst."
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: html_document
+      
+---
+
+```{r}
+
+```
+

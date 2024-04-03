@@ -222,7 +222,7 @@ weekly_flu_revision_plot <- ggplot(data = New_dataset_flu, aes(x = date, y = inc
 ```{r plot different versions until preliminary data}
 #add diff as of dates
   test2_prelim_flu <- load_healthdata_data(
-  as_of = '2024-03-27',
+  as_of = '2024-04-03',
   spatial_resolution = "state",
   temporal_resolution = "daily",
   measure = "flu hospitalizations",
@@ -237,10 +237,10 @@ weekly_flu_revision_plot <- ggplot(data = New_dataset_flu, aes(x = date, y = inc
   Truth_states_prelim_flu <- test2_prelim_flu %>%
     filter(location!="US" & date >= prior2m)
 
-  Truth_states_prelim_flu$as_of <- 20240327
+  Truth_states_prelim_flu$as_of <- 20240403
 
   prior_week_prelim_flu <- load_healthdata_data(
-  as_of = '2024-03-20',
+  as_of = '2024-03-27',
   spatial_resolution = "state",
   temporal_resolution = "daily",
   measure = "flu hospitalizations",
@@ -255,10 +255,10 @@ weekly_flu_revision_plot <- ggplot(data = New_dataset_flu, aes(x = date, y = inc
   Prior_week_prelim_flu <-prior_week_prelim_flu %>%
     filter(location!="US" & date >= prior2m)
 
-  Prior_week_prelim_flu$as_of <- 20240320
+  Prior_week_prelim_flu$as_of <- 20240327
 
   prior_week_final_flu <- load_healthdata_data(
-  as_of = '2024-03-22',
+  as_of = '2024-03-29',
   spatial_resolution = "state",
   temporal_resolution = "daily",
   measure = "flu hospitalizations",
@@ -273,7 +273,7 @@ weekly_flu_revision_plot <- ggplot(data = New_dataset_flu, aes(x = date, y = inc
   Prior_week_final_flu <- prior_week_final_flu %>%
     filter(location!="US" & date >= prior2m)
 
-  Prior_week_final_flu$as_of <- 20240322
+  Prior_week_final_flu$as_of <- 20240329
 
   dplyr::bind_rows(Truth_states_prelim_flu, Prior_week_prelim_flu, Prior_week_final_flu)
 
@@ -298,7 +298,7 @@ weekly_flu_revision_plot <- ggplot(data = New_dataset_flu, aes(x = date, y = inc
     ylim(0, NA) +
     scale_x_date(name = NULL, date_breaks="2 weeks", date_labels = "%m/%d") +
     scale_color_manual(values = my_colors, name="As of",
-    breaks=c("20240320", "20240322", "20240327")) +
+    breaks=c("20240327", "20240329", "20240403")) +
                          #labels=c("20240306" = "3_06", "20240308" = "3_08", "20240313" = "3_13") +
     ylab(ylab) +
     labs(title = paste("Flu hospitalizations over the past 2 months"),
